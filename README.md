@@ -17,3 +17,5 @@ http://bradanlane.gitlab.io/ros-i2cpwmboard/
 
 >https://www.youtube.com/watch?v=9OhSews4W_U  
 
+>>>  6 DOF robot arm (Al)
+> https://github.com/stawo/robot-arm?fbclid=IwAR1AEswoWr7Mz36Va5YKzmpsVSMraJz-tyQ0SwOz9dpjNIJALcMpYTSYtHw
