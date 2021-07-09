@@ -3,6 +3,8 @@
 
 >https://learn.adafruit.com/16-channel-pwm-servo-driver/python-circuitpython
 
+>https://github.com/adafruit/Adafruit_Python_PCA9685/blob/master/examples/simpletest.py
+
 >>>Control Multiple Servo with Raspberry Pi
 
 >https://github.com/adafruit/Adafruit_Python_PCA9685
