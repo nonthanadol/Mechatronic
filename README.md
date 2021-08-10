@@ -23,3 +23,7 @@ http://bradanlane.gitlab.io/ros-i2cpwmboard/
 
 >>>ROS pca
 > https://github.com/CORaisch/remote_car
+
+>>>python stepmotor
+
+>https://github.com/dimschlukas/rpi_python_drv8825
