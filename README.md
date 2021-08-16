@@ -28,5 +28,11 @@ http://bradanlane.gitlab.io/ros-i2cpwmboard/
 
 >https://github.com/dimschlukas/rpi_python_drv8825
 
+>https://bit.ly/2W1Ai5l
+
+>https://www.rototron.info/raspberry-pi-stepper-motor-tutorial/
+
+>https://bit.ly/37O6rja
+
 
 https://drive.google.com/file/d/1jEHHlBMJHfGF81rl1fQJNIH2oQJRKUCh/view?usp=sharing
