@@ -1,0 +1,4 @@
+<launch>
+  <node name="sub_key" pkg="robomecha" type="sub_keycontrol.py" output="screen"/>
+  <node name="pub_key" pkg="robomecha" type="pub_keycontrol.py" output="screen"/>
+</launch>
