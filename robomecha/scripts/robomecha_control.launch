@@ -1,8 +1,10 @@
 <launch>
   <!--ARM-->
+  <node name="sub_base" pkg="robomecha" type="sub_base.py" output="screen"/>
   <node name="sub_arm" pkg="robomecha" type="sub_arm.py" output="screen"/>
-  <node name="pub_arm" pkg="robomecha" type="pub_arm.py" output="screen"/>
+  <node name="pub_key" pkg="robomecha" type="pub_key.py" output="screen"/>
   <!--GRIPPER-->
   <node name="sub_gripper" pkg="robomecha" type="sub_gripper.py" output="screen"/>
-  <node name="pub_gripper" pkg="robomecha" type="pub_gripper.py" output="screen"/>
+  <!--node name="pub_gripper" pkg="robomecha" type="pub_gripper.py" output="screen"/-->
+
 </launch>

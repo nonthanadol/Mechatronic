@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 import rospy
-from std_msgs.msg import Bool
+#from std_msgs.msg import Bool
+from robomecha.msg import Angle
 import RPi.GPIO as GPIO
 import time
 
@@ -45,12 +46,12 @@ PWMA.ChangeDutyCycle(70)
 PWMB.ChangeDutyCycle(70)
 PWMC.ChangeDutyCycle(70)
 def gripper_state_callback(msg):
-		GPIO.output(IN1,msg.data)
-		GPIO.output(IN2,not msg.data)
-		GPIO.output(IN3,not msg.data)
-		GPIO.output(IN4,msg.data)
-		GPIO.output(IN5,msg.data)
-		GPIO.output(IN6,not msg.data)
+		GPIO.output(IN1,msg.grip_state)
+		GPIO.output(IN2,not msg.grip_state)
+		GPIO.output(IN3,not msg.grip_state)
+		GPIO.output(IN4,msg.grip_state)
+		GPIO.output(IN5,msg.grip_state)
+		GPIO.output(IN6,not msg.grip_state)
 		time.sleep(2)
 		GPIO.output(IN1,GPIO.LOW)
 		GPIO.output(IN2,GPIO.LOW)
@@ -63,6 +64,6 @@ def gripper_state_callback(msg):
 if __name__ == '__main__':
     rospy.init_node('sub_gripper')
     print('Start!!!')
-    rospy.Subscriber('gripper_state', Bool, gripper_state_callback)
+    rospy.Subscriber('key', Angle, gripper_state_callback)
 
     rospy.spin()

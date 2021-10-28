@@ -1,11 +1,21 @@
 #!/usr/bin/env python3
 import sys, tty, termios, os
 import rospy
-from std_msgs.msg import Int64
+from robomecha.msg import Angle
+#from std_msgs.msg import Bool
 
-
-degree0 = 90
-
+#from GripperControl import AlphaBot
+#bot=AlphaBot()
+#bot.setPWMA(70)
+#bot.setPWMB(70)
+#bot.setPWMC(70)
+control=Angle()
+step_angle = 3
+control.degree1 = 90
+control.degree2 = 90
+control.degree3 = 165
+control.degree4 = 15
+control.degree5 = 122
 def getch():
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
@@ -17,20 +27,57 @@ def getch():
     return ch
 
 
+
 if __name__ == '__main__':
- rospy.init_node('key')
- pub = rospy.Publisher('key',Int64 , queue_size = 10)
+ rospy.init_node('pub_key')
+ pub = rospy.Publisher('key',Angle , queue_size = 10)
  rate = rospy.Rate(10)
  while not rospy.is_shutdown():
    char = getch()
    if(char == 'r'):
-      degree0 = degree0 + 1
-      print('increment angle joint0 ++  '+str(degree0))
+      control.degree1 = control.degree1 + step_angle
+      control.degree2 = control.degree2 - step_angle
+     # print('increment angle joint2 ++  ',control.degree1)
    elif(char == 'f'):
-      degree0 = degree0 - 1
-      print('Decrement angle joint0 -- {}'.format(degree0))
+      control.degree1 = control.degree1 - step_angle
+      control.degree2 = control.degree2 + step_angle
+     # print('Decrement angle joint2 -- ',control.degree1)
+   elif(char == 't'):
+      control.degree3 = control.degree3 + step_angle
+      #print('increment angle joint3 ++  ',control.degree2)
+   elif(char == 'g'):
+      control.degree3 = control.degree3 - step_angle
+      #print('Decrement angle joint3 -- ',control.degree2)
+   elif(char == 'y'):
+      control.degree4 = control.degree4 + step_angle
+      #print('increment angle joint4 ++  ',control.degree3)
+   elif(char == 'h'):
+      control.degree4 = control.degree4 - step_angle
+      #print('Decrement angle joint4 -- ',control.degree3)
+   elif(char == 'u'):
+      control.degree5 = control.degree5 + step_angle
+      #print('increment angle joint5 ++  ',control.degree4)
+   elif(char == 'j'):
+      control.degree5 = control.degree5 - step_angle
+      #print('Decrement angle joint5 -- ',control.degree4)
+   
+   ## Base robot ##
+   elif(char == 'e'):     
+      control.move_base = True
+   elif(char == 'd'):
+      control.move_base = False   
+   
+   ## Gripper ##
+   elif(char == 'q'):
+      #print('q')
+      control.grip_state = True
+   elif(char == 'a'):
+      #print('a')
+      control.grip_state = False
+  
    elif(char == "x"):
       break
    char = ""
-   pub.publish(degree0)
+   pub.publish(control)
    rate.sleep()
+  

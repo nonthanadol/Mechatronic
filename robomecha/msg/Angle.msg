@@ -4,3 +4,5 @@ int64 degree2
 int64 degree3
 int64 degree4
 int64 degree5
+bool grip_state
+bool move_base

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
 import rospy
-from std_msgs.msg import Bool
+#from std_msgs.msg import Bool
+from robomecha.msg import Angle
 import sys, tty, termios, os
-control=Bool()
+control=Angle()
 def getch():
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
@@ -18,18 +19,18 @@ if __name__ == '__main__':
     rospy.init_node('pub_gripper')
     print("Start!!!!!!")
     rate = rospy.Rate(10)
-    pub = rospy.Publisher('gripper_state', Bool, queue_size = 10)
+    pub = rospy.Publisher('key', Angle, queue_size = 10)
     while True:
         char = getch()
         if(char == 'q'):
            print('q')
-           control.data = True
+           control.grip_state = True
         elif(char == 'a'):
            print('a')
-           control.data = False
+           control.grip_state = False
         elif(char == 'z'):
            print('z')
-           control.data = False
+           control.grip_state = False
         elif(char == "x"):
            break
         char = ""
