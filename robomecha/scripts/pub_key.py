@@ -37,47 +37,59 @@ if __name__ == '__main__':
    if(char == 'r'):
       control.degree1 = control.degree1 + step_angle
       control.degree2 = control.degree2 - step_angle
+      pub.publish(control)
      # print('increment angle joint2 ++  ',control.degree1)
    elif(char == 'f'):
       control.degree1 = control.degree1 - step_angle
       control.degree2 = control.degree2 + step_angle
+      pub.publish(control)
      # print('Decrement angle joint2 -- ',control.degree1)
    elif(char == 't'):
       control.degree3 = control.degree3 + step_angle
+      pub.publish(control)
       #print('increment angle joint3 ++  ',control.degree2)
    elif(char == 'g'):
       control.degree3 = control.degree3 - step_angle
+      pub.publish(control)
       #print('Decrement angle joint3 -- ',control.degree2)
    elif(char == 'y'):
       control.degree4 = control.degree4 + step_angle
+      pub.publish(control)
       #print('increment angle joint4 ++  ',control.degree3)
    elif(char == 'h'):
       control.degree4 = control.degree4 - step_angle
+      pub.publish(control)
       #print('Decrement angle joint4 -- ',control.degree3)
    elif(char == 'u'):
       control.degree5 = control.degree5 + step_angle
+      pub.publish(control)
       #print('increment angle joint5 ++  ',control.degree4)
    elif(char == 'j'):
       control.degree5 = control.degree5 - step_angle
+      pub.publish(control)
       #print('Decrement angle joint5 -- ',control.degree4)
    
    ## Base robot ##
    elif(char == 'e'):     
       control.move_base = True
+      pub.publish(control)
    elif(char == 'd'):
-      control.move_base = False   
+      control.move_base = False 
+      pub.publish(control)  
    
    ## Gripper ##
    elif(char == 'q'):
       #print('q')
       control.grip_state = True
+      pub.publish(control)
    elif(char == 'a'):
       #print('a')
       control.grip_state = False
+      pub.publish(control)
   
    elif(char == "x"):
       break
    char = ""
-   pub.publish(control)
+   #pub.publish(control)
    rate.sleep()
   
